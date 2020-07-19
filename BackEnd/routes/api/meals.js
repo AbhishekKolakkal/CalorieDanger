@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 let { content } = require("../../db");
 
-const uuid =
+let uuid =
   Math.random().toString(36).substring(2, 15) +
   Math.random().toString(36).substring(2, 15);
 
@@ -31,9 +31,12 @@ router.put("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   const newMeal = {
-    id: uuid,
-    title: req.body.title,
+    id:
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15),
+    name: req.body.title,
     date: req.body.date,
     calorie: req.body.calorie,
   };
@@ -50,7 +53,7 @@ router.delete("/:id", (req, res) => {
     res.status(404).json("Not There, Something is wrong");
   } else {
     let removed = content.meals.splice(idx, 1);
-    res.json(removed);
+    res.json(content);
   }
 });
 

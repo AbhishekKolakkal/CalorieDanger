@@ -1,6 +1,12 @@
 const content = {
   isLogin: false,
-  meals: [],
+  meals: [
+    // {
+    //   id: "1",
+    //   name: "BreakFast",
+    //   calorie: 2000,
+    // },
+  ],
 };
 
 const users = [

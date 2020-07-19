@@ -17,7 +17,7 @@ export class Meal extends Component {
           <li className="collection-item avatar">
             {/* <img src="images/yuna.jpg" alt="" class="circle"></img> */}
             <span className="title">
-              {meal.title} - {meal.id}
+              {meal.name} - {meal.id}
             </span>
             <p> {meal.calorie} </p>
             <p> SecondLink </p>

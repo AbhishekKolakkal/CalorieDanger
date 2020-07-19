@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createMeal } from "../../store/actions/mealActions";
+import { Redirect } from "react-router-dom";
 
 class CreateMeal extends Component {
   state = {
-    title: "",
+    name: "",
     date: "",
     calorie: "",
   };
@@ -17,8 +18,9 @@ class CreateMeal extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
+    console.log(this.state);
     this.props.createMeal(this.state);
+    this.props.history.push("/");
   };
   render() {
     return (
@@ -26,16 +28,16 @@ class CreateMeal extends Component {
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3"> Add Meal </h5>
           <div className="input-field">
-            <label htmlFor="title">Meal Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
+            <label htmlFor="name">Meal Title</label>
+            <input type="text" id="name" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="password">Date</label>
-            <input type="text" id="date" onChange={this.handleChange} />
+            {/* <label htmlFor="password">Date</label> */}
+            <input type="date" id="date" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <label htmlFor="calorie">Calorie</label>
-            <input type="text" id="calorie" onChange={this.handleChange} />
+            <input type="number" id="calorie" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Add</button>

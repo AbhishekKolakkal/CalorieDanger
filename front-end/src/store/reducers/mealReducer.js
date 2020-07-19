@@ -7,7 +7,6 @@ const initState = {
 };
 
 const mealReducer = (state = initState, action) => {
-  console.log("MEAL REDUCER");
   switch (action.type) {
     case "CREATE_MEAL":
       console.log("CREATE_MEAL", action.meal);
@@ -16,11 +15,21 @@ const mealReducer = (state = initState, action) => {
       console.log("MEAL CREATE ERROR", action.err);
       return state;
     case "GET_MEALS":
-      // console.log("MEAL CREATE ERROR", action.meals);
-      return state;
+      return {
+        ...state,
+        meals: action.payload.meals,
+        loading: false,
+        isLogin: action.payload.isLogin,
+      };
+
     case "DELETE_MEAL":
       console.log("DELETE_MEAL");
-      return state;
+      return {
+        ...state,
+        meals: action.payload.meals,
+        loading: false,
+        isLogin: action.payload.isLogin,
+      };
     case "ITEMS_LOADING":
       return {
         ...state,
