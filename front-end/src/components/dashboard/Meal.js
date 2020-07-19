@@ -1,52 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { deleteMeal } from "../../store/actions/mealActions";
+import { connect } from "react-redux";
+import PropType from "prop-types";
 
-const meal = ({ meal }) => {
-  return (
-    <div className="">
-      <ul className="collection">
-        <li className="collection-item avatar">
-          {/* <img src="images/yuna.jpg" alt="" class="circle"></img> */}
-          <span className="title">
-            {meal.title} - {meal.id}
-          </span>
-          <p> {meal.calorie} </p>
-          <p> SecondLink </p>
-          <div className="secondary-content">
-            <button className="waves-effect waves-light btn"> Edit </button>
-            <button className="waves-effect waves-light btn"> Delete </button>
-          </div>
-          {/* <a class=" waves-effect waves-light btn">button</a> */}
-          {/* <a href="#!" class="secondary-content">
-            <i class="material-icons">grade</i>
-          </a> */}
-        </li>
-      </ul>
+export class Meal extends Component {
+  onDeleteClick = (id) => {
+    this.props.deleteMeal(id);
+  };
 
-      {/* <ul className="collection">
-        <li className="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle"></img>
-          <span class="title">Title</span>
-          <p> FirstLine </p>
-          <p> SecondLink </p>
-          <a href="#!" class="secondary-content">
-            <i class="material-icons">grade</i>
-          </a>
-        </li>
-      </ul>
+  render() {
+    const { meal } = this.props;
+    return (
+      <div className="">
+        <ul className="collection">
+          <li className="collection-item avatar">
+            {/* <img src="images/yuna.jpg" alt="" class="circle"></img> */}
+            <span className="title">
+              {meal.title} - {meal.id}
+            </span>
+            <p> {meal.calorie} </p>
+            <p> SecondLink </p>
+            <div className="secondary-content">
+              <Link to={"/meal/" + meal.id}>
+                <button className="waves-effect waves-light btn"> Edit </button>
+              </Link>
+              <button
+                onClick={this.onDeleteClick.bind(this, meal.id)}
+                className="waves-effect waves-light btn"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+}
 
-      <ul className="collection">
-        <li className="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle"></img>
-          <span class="title">Title</span>
-          <p> FirstLine </p>
-          <p> SecondLink </p>
-          <a href="#!" class="secondary-content">
-            <i class="material-icons">grade</i>
-          </a>
-        </li>
-      </ul> */}
-    </div>
-  );
+Meal.PropType = {
+  deleteMeal: PropType.func.isRequired,
 };
 
-export default meal;
+export default connect(null, { deleteMeal })(Meal);

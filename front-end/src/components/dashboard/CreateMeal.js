@@ -46,10 +46,4 @@ class CreateMeal extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createMeal: (meal) => dispatch(createMeal(meal)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(CreateMeal);
+export default connect(null, { createMeal })(CreateMeal);

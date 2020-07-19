@@ -1,17 +1,35 @@
+// how will i get the data for the first time still need to be done
+
 const initState = {
-  meals: [
-    { id: "1", title: "Breakfast", calorie: 2000 },
-    { id: "2", title: "Lunch", calorie: 2000 },
-    { id: "3", title: "Dinner", calorie: 2000 },
-  ],
+  isLogin: false,
+  meals: [],
+  loading: false,
 };
 
 const mealReducer = (state = initState, action) => {
+  console.log("MEAL REDUCER");
   switch (action.type) {
     case "CREATE_MEAL":
-      console.log("meal created", action.meal);
+      console.log("CREATE_MEAL", action.meal);
+      return state;
+    case "CREATE_MEAL_ERROR":
+      console.log("MEAL CREATE ERROR", action.err);
+      return state;
+    case "GET_MEALS":
+      // console.log("MEAL CREATE ERROR", action.meals);
+      return state;
+    case "DELETE_MEAL":
+      console.log("DELETE_MEAL");
+      return state;
+    case "ITEMS_LOADING":
+      return {
+        ...state,
+        loading: true,
+      };
+    default:
+      return state;
   }
-  return state;
+  // return state;
 };
 
 export default mealReducer;
