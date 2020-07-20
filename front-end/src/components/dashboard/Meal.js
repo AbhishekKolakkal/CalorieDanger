@@ -14,13 +14,13 @@ export class Meal extends Component {
     return (
       <div className="">
         <ul className="collection">
-          <li className="collection-item avatar">
-            {/* <img src="images/yuna.jpg" alt="" class="circle"></img> */}
-            <span className="title">
-              {meal.name} - {meal.id}
-            </span>
-            <p> {meal.calorie} </p>
-            <p> SecondLink </p>
+          <li
+            style={{ color: meal.calorie > 2000 ? "red" : "" }}
+            className="collection-item avatar"
+          >
+            <span className="title">Meal Name: {meal.name}</span>
+            <p> Calorie: {meal.calorie} </p>
+            <p> Date: {Date(meal.date)} </p>
             <div className="secondary-content">
               <Link to={"/meal/" + meal.id}>
                 <button className="waves-effect waves-light btn"> Edit </button>

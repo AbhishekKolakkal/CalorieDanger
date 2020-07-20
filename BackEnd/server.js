@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 
 app.use("/api/meals", meals);
 
-app.use("/api/auth", auth);
+app.use("/meal", meals);
+
+app.use("/auth", auth);
 
 const port = process.env.PORT || 5000;
 

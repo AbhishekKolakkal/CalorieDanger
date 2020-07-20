@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createMeal } from "../../store/actions/mealActions";
-import { Redirect } from "react-router-dom";
 
 class CreateMeal extends Component {
   state = {
@@ -29,15 +28,30 @@ class CreateMeal extends Component {
           <h5 className="grey-text text-darken-3"> Add Meal </h5>
           <div className="input-field">
             <label htmlFor="name">Meal Title</label>
-            <input type="text" id="name" onChange={this.handleChange} />
+            <input
+              type="text"
+              id="name"
+              onChange={this.handleChange}
+              required
+            />
           </div>
           <div className="input-field">
             {/* <label htmlFor="password">Date</label> */}
-            <input type="date" id="date" onChange={this.handleChange} />
+            <input
+              type="date"
+              id="date"
+              onChange={this.handleChange}
+              required
+            />
           </div>
           <div className="input-field">
             <label htmlFor="calorie">Calorie</label>
-            <input type="number" id="calorie" onChange={this.handleChange} />
+            <input
+              type="number"
+              id="calorie"
+              onChange={this.handleChange}
+              required
+            />
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Add</button>
